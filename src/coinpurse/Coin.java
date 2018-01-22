@@ -35,7 +35,7 @@ public class Coin implements Comparable<Coin> {
 	/**
 	 * Gets the currency of the coin.
 	 * 
-	 * @return
+	 * @return currency
 	 */
 	public String getCurrency() {
 		return this.currency;

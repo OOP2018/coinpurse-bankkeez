@@ -56,7 +56,7 @@ public class Purse {
 	/**
 	 * Return the capacity of the coin purse.
 	 * 
-	 * @return the capacity
+	 * @return capacity
 	 */
 	public int getCapacity() {
 		return this.capacity;
@@ -102,7 +102,7 @@ public class Purse {
 	public Coin[] withdraw(double amount) {
 		Collections.sort(money);
 		Collections.reverse(money);
-		if (amount < 0) {
+		if (amount < 0 ) {
 			return null;
 		}
 		/*
@@ -121,15 +121,12 @@ public class Purse {
 		// Your code might use some other variable for the remaining amount to
 		// withdraw.
 		List<Coin> temp = new ArrayList<>();
-		if (amount != 0) {
 			for (Coin coin : money) {
-				if (amount >= 0) {
 					if (amount >= coin.getValue()) {
 						temp.add(coin);
 						amount -= coin.getValue();
 						// money.remove(coin);
 					}
-				}
 			}
 			if (amount == 0) {
 				for (Coin coin : temp) {
@@ -138,7 +135,6 @@ public class Purse {
 			} else {
 				return null;
 			}
-		}
 		Coin[] tmp = new Coin[temp.size()];
 		temp.toArray(tmp);
 		// Success.
@@ -154,10 +150,8 @@ public class Purse {
 	 * return whatever is a useful description.
 	 */
 	public String toString() {
-		// TODO complete this
-		return "you forgot to write Purse.toString()";
+		return String.format("%d"+" coins with value"+"%.1f",money.size(),getBalance());
 	}
 
 }
-// TODO When you finish, there should not be any TODO comments, including this
-// one!
+
