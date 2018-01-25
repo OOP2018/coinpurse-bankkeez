@@ -12,9 +12,9 @@ public class Coin implements Comparable<Coin> {
 	 * Creates a coin with value more than 0 and initialize the currency of the
 	 * coin.
 	 * 
-	 * @param Value
+	 * @param value
 	 *            of the coin.
-	 * @param Type
+	 * @param currency
 	 *            of the coin.
 	 */
 	public Coin(double value, String currency) {
@@ -45,8 +45,7 @@ public class Coin implements Comparable<Coin> {
 	 * Check the object whether it is a Coin or not, if Coin then check the
 	 * currency and value.
 	 * 
-	 * @param an
-	 *            object
+	 * @param Object
 	 * @return return true if an object equals.
 	 */
 	@Override
@@ -62,7 +61,7 @@ public class Coin implements Comparable<Coin> {
 	/**
 	 * @param Coin
 	 *            to compare with an another one.
-	 * @return
+	 * @return int in differnt conditions
 	 */
 	@Override
 	public int compareTo(Coin coin) {

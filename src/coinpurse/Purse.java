@@ -8,7 +8,7 @@ import java.util.Collections;
  * A coin purse contains coins. You can insert coins, withdraw money, check the
  * balance, and check if the purse is full.
  * 
- * @author your name
+ * @author Piyawat Setthitikun
  */
 public class Purse {
 	/** Collection of objects in the purse. */
@@ -102,46 +102,27 @@ public class Purse {
 	public Coin[] withdraw(double amount) {
 		Collections.sort(money);
 		Collections.reverse(money);
-		if (amount < 0 ) {
+		if (amount < 0) {
 			return null;
 		}
-		/*
-		 * See lab sheet for outline of a solution, or devise your own solution.
-		 * The idea is to be greedy. Try to withdraw the largest coins possible.
-		 * Each time you choose a coin as a candidate for withdraw, add it to a
-		 * temporary list and decrease the amount (remainder) to withdraw.
-		 * 
-		 * If you reach a point where amountNeededToWithdraw == 0 then you found
-		 * a solution! Now, use the temporary list to remove coins from the
-		 * money list, and return the temporary list (as an array).
-		 */
-
-		// Did we get the full amount?
-		// This code assumes you decrease amount each time you remove a coin.
-		// Your code might use some other variable for the remaining amount to
-		// withdraw.
 		List<Coin> temp = new ArrayList<>();
-			for (Coin coin : money) {
-					if (amount >= coin.getValue()) {
-						temp.add(coin);
-						amount -= coin.getValue();
-						// money.remove(coin);
-					}
+		for (Coin coin : money) {
+			if (amount >= coin.getValue()) {
+				temp.add(coin);
+				amount -= coin.getValue();
+				// money.remove(coin);
 			}
-			if (amount == 0) {
-				for (Coin coin : temp) {
-					money.remove(coin);
-				}
-			} else {
-				return null;
+		}
+		if (amount == 0) {
+			for (Coin coin : temp) {
+				money.remove(coin);
 			}
+		} else {
+			return null;
+		}
 		Coin[] tmp = new Coin[temp.size()];
 		temp.toArray(tmp);
-		// Success.
-		// Remove the coins you want to withdraw from purse,
-		// and return them as an array.
-		// Use list.toArray( array[] ) to copy a list into an array.
-		// toArray returns a reference to the array itself.
+
 		return tmp;
 	}
 
@@ -150,8 +131,7 @@ public class Purse {
 	 * return whatever is a useful description.
 	 */
 	public String toString() {
-		return String.format("%d"+" coins with value"+"%.1f",money.size(),getBalance());
+		return String.format("%d" + " coins with value" + "%.1f", money.size(), getBalance());
 	}
 
 }
-

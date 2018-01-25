@@ -10,7 +10,6 @@ public class MoneyUtil {
 		coins.add(new Coin(10.0, "Satang"));
 		coins.add(new Coin(5.0, "Rupee"));
 		coins.add(new Coin(1.0, "Rupee"));
-		printCoins(coins);
 		sortCoins(coins);
 		printCoins(coins);
 	}
