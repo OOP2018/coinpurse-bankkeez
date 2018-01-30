@@ -3,6 +3,7 @@ package coinpurse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * A coin purse contains coins. You can insert coins, withdraw money, check the
@@ -12,7 +13,7 @@ import java.util.Collections;
  */
 public class Purse {
 	/** Collection of objects in the purse. */
-	List<Coin> money;
+	List<Valuable> money;
 
 	/**
 	 * Capacity is maximum number of items the purse can hold. Capacity is set
@@ -48,8 +49,8 @@ public class Purse {
 	 */
 	public double getBalance() {
 		double sum = 0;
-		for (Coin coins : money)
-			sum += coins.getValue();
+		for (Valuable value : money)
+			sum += value.getValue();
 		return sum;
 	}
 
@@ -80,9 +81,9 @@ public class Purse {
 	 *            is a Coin object to insert into purse
 	 * @return true if coin inserted, false if can't insert
 	 */
-	public boolean insert(Coin coin) {
-		if (coin.getValue() > 0 && !isFull()) {
-			money.add(coin);
+	public boolean insert(Valuable value) {
+		if (value.getValue() > 0 && !isFull()) {
+			money.add(value);
 			return true;
 		} else {
 			return false;
@@ -99,27 +100,28 @@ public class Purse {
 	 * @return array of Coin objects for money withdrawn, or null if cannot
 	 *         withdraw requested amount.
 	 */
-	public Coin[] withdraw(double amount) {
-		Collections.sort(money);
+	public Valuable[] withdraw(double amount) {
+		Comparator<Valuable> comparable = new ValueComparator();
+		Collections.sort(money, comparable);
 		Collections.reverse(money);
 		if (amount < 0) {
 			return null;
 		}
-		List<Coin> temp = new ArrayList<>();
-		for (Coin coin : money) {
-			if (amount >= coin.getValue()) {
-				temp.add(coin);
-				amount -= coin.getValue();
+		List<Valuable> temp = new ArrayList<>();
+		for (Valuable value : money) {
+			if (amount >= value.getValue()) {
+				temp.add(value);
+				amount -= value.getValue();
 			}
 		}
 		if (amount == 0) {
-			for (Coin coin : temp) {
+			for (Valuable coin : temp) {
 				money.remove(coin);
 			}
 		} else {
 			return null;
 		}
-		Coin[] tmp = new Coin[temp.size()];
+		Valuable[] tmp = new Valuable[temp.size()];
 		temp.toArray(tmp);
 
 		return tmp;
