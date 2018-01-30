@@ -110,7 +110,6 @@ public class Purse {
 			if (amount >= coin.getValue()) {
 				temp.add(coin);
 				amount -= coin.getValue();
-				// money.remove(coin);
 			}
 		}
 		if (amount == 0) {
