@@ -1,36 +1,58 @@
 package coinpurse;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class MoneyUtil {
-	public static void main(String[] args) {
-		List<Coin> coins = new ArrayList<Coin>();
-		coins.add(new Coin(10.0, "Rupee"));
-		coins.add(new Coin(10.0, "Satang"));
-		coins.add(new Coin(5.0, "Rupee"));
-		coins.add(new Coin(1.0, "Rupee"));
-		sortCoins(coins);
-		printCoins(coins);
-	}
+	/** Create a ValueComparator object */
+	private static Comparator<Valuable> comparable = new ValueComparator();
 
 	/**
 	 * Print every item in the List
 	 * 
-	 * @param List<Coin>
+	 * @param List<Valuable>
 	 */
-	public static void printCoins(List<Coin> coins) {
-		for (Coin coin : coins) {
-			System.out.println(coins);
+	public static void printValue(List<Valuable> value) {
+		for (Valuable values : value) {
+			System.out.println(values);
 		}
 	}
 
 	/**
 	 * Sort any list of comparable object
 	 * 
-	 * @param List<Coin>
+	 * @param List<Valuable>
 	 */
-	public static void sortCoins(List<Coin> coins) {
-		java.util.Collections.sort(coins);
+	public static void sortValue(List<Valuable> value) {
+		java.util.Collections.sort(value, comparable);
+	}
+
+	/*
+	 * Filter the money by currency.
+	 * 
+	 * @param money
+	 * 
+	 * @param currency
+	 * 
+	 * @return List<Valuable>
+	 */
+	public static List<Valuable> filterByCurrency(List<Valuable> money, String currency) {
+		List<Valuable> tempCurrency = new ArrayList<>();
+		for (Valuable value : money) {
+			if (value.getCurrency().equals(currency))
+				tempCurrency.add(value);
+		}
+		return tempCurrency;
+	}
+
+	public static void main(String[] args) {
+		List<Valuable> value = new ArrayList<Valuable>();
+		value.add(new Coin(10.0, "Rupee"));
+		value.add(new Coin(10.0, "Satang"));
+		value.add(new Coin(5.0, "Rupee"));
+		value.add(new Coin(1.0, "Rupee"));
+		sortValue(value);
+		printValue(value);
 	}
 }

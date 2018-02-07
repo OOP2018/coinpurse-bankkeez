@@ -21,6 +21,9 @@ public class Purse {
 	 */
 	private final int capacity;
 
+	// ValueComparator object
+	private Comparator<Valuable> comparable = new ValueComparator();
+
 	/**
 	 * Create a purse with a specified capacity.
 	 * 
@@ -101,7 +104,7 @@ public class Purse {
 	 *         withdraw requested amount.
 	 */
 	public Valuable[] withdraw(double amount) {
-		Comparator<Valuable> comparable = new ValueComparator();
+
 		Collections.sort(money, comparable);
 		Collections.reverse(money);
 		if (amount < 0) {
@@ -132,7 +135,7 @@ public class Purse {
 	 * return whatever is a useful description.
 	 */
 	public String toString() {
-		return String.format("%d" + " coins with value" + "%.1f", money.size(), getBalance());
+		return String.format("The total money are %d with the value of %f", this.count(), this.getBalance());
 	}
 
 }

@@ -4,7 +4,7 @@ package coinpurse;
  * Coin represents coinage (money) with fixed value and currency.
  * @author Piyawat Setthitikun
  */
-public class Coin implements Comparable<Coin>,Valuable {
+public class Coin implements Comparable<Coin>, Valuable {
 	private double value;
 	private String currency;
 
@@ -55,7 +55,7 @@ public class Coin implements Comparable<Coin>,Valuable {
 		if (obj.getClass() != this.getClass())
 			return false;
 		Coin coin = (Coin) obj;
-		return this.value == coin.value && this.currency == coin.currency;
+		return this.value == coin.value && this.currency.equals(coin.currency);
 	}
 
 	/**

@@ -55,7 +55,7 @@ public class BankNote implements Valuable {
 	 * 
 	 * @return serial number
 	 */
-	public long getSerialNumber() {
+	public long getSerial() {
 		return this.serialNumber;
 	}
 

@@ -26,12 +26,9 @@ public class ValueComparator implements Comparator<Valuable> {
 			else
 				return 0;
 			// when currency is different
-		} else {
-			// either a or b is more still get the correct currency value
-			if (a.getCurrency().charAt(0) < b.getCurrency().charAt(0))
-				return 1;
-			else
-				return -1;
 		}
+		// low or high up to alphabetical orders
+		return a.getCurrency().compareTo(b.getCurrency());
+
 	}
 }
