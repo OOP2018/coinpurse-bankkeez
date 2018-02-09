@@ -1,5 +1,13 @@
 package coinpurse;
 
+/**
+ * Money class represents current medium of exchange in the form of coins, bank
+ * notes, or others. This class contain attributes that most kind of money
+ * should have such as value,currency, and methods for comparing them.
+ * 
+ * @author Piyawat Setthitikun
+ *
+ */
 public class Money implements Valuable {
 
 	protected double value;
