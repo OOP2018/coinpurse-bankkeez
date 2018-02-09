@@ -131,6 +131,49 @@ public class Purse {
 	}
 
 	/**
+	 * Withdraw the requested amount of money. Return an array of Coins
+	 * withdrawn from purse, or return null if cannot withdraw the amount
+	 * requested.
+	 * 
+	 * @param amount
+	 *            is the amount to withdraw
+	 * @return array of Coin objects for money withdrawn, or null if cannot
+	 *         withdraw requested amount.
+	 */
+	public Valuable[] withdraw(Valuable amount) {
+		List<Valuable> tmpWithdraw = new ArrayList<>();
+		List<Valuable> tmpCurrency = new ArrayList<>();
+		Collections.sort(money, comparable);
+		Collections.reverse(money);
+		double value2 = amount.getValue();
+		if (value2 < 0) {
+			return null;
+		}
+		for (Valuable valuable : money) {
+			if (valuable.getCurrency().equals(amount.getCurrency()))
+				;
+			tmpCurrency.add(valuable);
+		}
+		for (Valuable value : tmpCurrency) {
+			if (value2 >= value.getValue()) {
+				tmpWithdraw.add(value);
+				value2 -= value.getValue();
+			}
+		}
+		if (value2 == 0) {
+			for (Valuable value : tmpWithdraw) {
+				money.remove(value);
+			}
+		} else {
+			return null;
+		}
+		Valuable[] tmp = new Valuable[tmpWithdraw.size()];
+		tmpWithdraw.toArray(tmp);
+
+		return tmp;
+	}
+
+	/**
 	 * toString returns a string description of the purse contents. It can
 	 * return whatever is a useful description.
 	 */
