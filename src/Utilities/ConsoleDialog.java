@@ -1,6 +1,9 @@
-package coinpurse;
+package Utilities;
 
 import java.util.Scanner;
+
+import Factory.MoneyFactory;
+import Valuables.Valuable;
 
 /**
  * User Interface for the Coin Purse. This class provides simple interactive
@@ -21,6 +24,8 @@ public class ConsoleDialog {
 	// to constructor)
 	// so don't create a Purse here.
 	private Purse purse;
+	// MoneyFactory static instance
+	private MoneyFactory factory = MoneyFactory.getInstance();
 
 	/**
 	 * Initialize a new Purse dialog.
@@ -129,9 +134,7 @@ public class ConsoleDialog {
 
 	/** Make a Coin (or BankNote or whatever) using requested value. */
 	private Valuable makeMoney(double value) {
-		if (value >= 20)
-			return new BankNote(value, CURRENCY);
-		return new Coin(value, CURRENCY);
+		return factory.createMoney(value);
 	}
 
 }

@@ -1,5 +1,8 @@
 package coinpurse;
- 
+
+import Utilities.ConsoleDialog;
+import Utilities.Purse;
+
 /**
  * A main class to create objects and connect objects together.
  * The user interface needs a reference to coin purse.

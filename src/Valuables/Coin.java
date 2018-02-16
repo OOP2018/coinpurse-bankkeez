@@ -1,4 +1,4 @@
-package coinpurse;
+package Valuables;
 
 /*
  * Coin represents coinage (money) with fixed value and currency.

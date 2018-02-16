@@ -1,4 +1,4 @@
-package coinpurse;
+package Valuables;
 
 /**
  * An interface for objects having a monetary value and currency.

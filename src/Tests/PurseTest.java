@@ -1,4 +1,4 @@
-package coinpurse;
+package Tests;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
@@ -6,6 +6,11 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import Utilities.Purse;
+import Valuables.Coin;
+import Valuables.Money;
+import Valuables.Valuable;
 
 /**
  * Test the Purse using JUnit.

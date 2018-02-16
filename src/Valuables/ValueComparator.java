@@ -1,4 +1,4 @@
-package coinpurse;
+package Valuables;
 
 import java.util.Comparator;
 

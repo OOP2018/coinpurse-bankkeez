@@ -1,4 +1,4 @@
-package coinpurse;
+package Valuables;
 
 /**
  * Bank note class containing fixed value, serial number, and currency. Also
@@ -8,8 +8,6 @@ package coinpurse;
  *
  */
 public class BankNote extends Money {
-	// Next bank note serial number
-	private static long nextSerialNumber = 1000000;
 	// Bank note serial number
 	private long serialNumber;
 
@@ -21,10 +19,9 @@ public class BankNote extends Money {
 	 * @param currency
 	 *            of bank note
 	 */
-	public BankNote(double value, String currency) {
+	public BankNote(double value, String currency, long serialNumber) {
 		super(value, currency);
-		this.serialNumber = nextSerialNumber;
-		nextSerialNumber++;
+		this.serialNumber = serialNumber;
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package coinpurse;
+package Valuables;
 
 /**
  * Money class represents current medium of exchange in the form of coins, bank

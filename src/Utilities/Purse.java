@@ -1,7 +1,12 @@
-package coinpurse;
+package Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import Valuables.Money;
+import Valuables.Valuable;
+import Valuables.ValueComparator;
+
 import java.util.Collections;
 import java.util.Comparator;
 
