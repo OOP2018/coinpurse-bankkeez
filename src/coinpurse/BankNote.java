@@ -37,22 +37,6 @@ public class BankNote extends Money {
 	}
 
 	/**
-	 * Check if the object is BankNote value and currency are the same or not.
-	 * 
-	 * @param object
-	 * @return true if object is BankNote with same currency and value
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null)
-			return false;
-		if (this.getClass() != obj.getClass())
-			return false;
-		BankNote banknote = (BankNote) obj;
-		return this.value == banknote.value && this.currency.equals(banknote.currency);
-	}
-
-	/**
 	 * Represent the bank note is a sentence.
 	 * 
 	 * @return phrase representing bank note

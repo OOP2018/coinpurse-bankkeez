@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- * A coin purse contains coins. You can insert coins, withdraw money, check the
+ * A purse contains valuables. You can insert any valuables, withdraw them, check the
  * balance, and check if the purse is full.
  * 
  * @author Piyawat Setthitikun
@@ -36,8 +36,8 @@ public class Purse {
 	}
 
 	/**
-	 * Count and return the number of coins in the purse. This is the number of
-	 * coins, not their value.
+	 * Count and return the number of valuables in the purse. This is the number of
+	 * valuable inserted, not their value.
 	 * 
 	 * @return the number of coins in the purse
 	 */
@@ -77,8 +77,8 @@ public class Purse {
 	}
 
 	/**
-	 * Insert a coin into the purse. The coin is only inserted if the purse has
-	 * space for it and the coin has positive value. No worthless coins!
+	 * Insert money into the purse. The money is only inserted if the purse has
+	 * space for it and the money has positive value. No worthless money!
 	 * 
 	 * @param coin
 	 *            is a Coin object to insert into purse
@@ -94,53 +94,32 @@ public class Purse {
 	}
 
 	/**
-	 * Withdraw the requested amount of money. Return an array of Coins
+	 * Withdraw the requested amount of money. Return an array of Valuables
 	 * withdrawn from purse, or return null if cannot withdraw the amount
 	 * requested.
 	 * 
 	 * @param amount
 	 *            is the amount to withdraw
-	 * @return array of Coin objects for money withdrawn, or null if cannot
+	 * @return array of VAluable objects for money withdrawn, or null if cannot
 	 *         withdraw requested amount.
 	 */
 	public Valuable[] withdraw(double amount) {
 
-		Collections.sort(money, comparable);
-		Collections.reverse(money);
-		if (amount < 0) {
-			return null;
-		}
-		List<Valuable> temp = new ArrayList<>();
-		for (Valuable value : money) {
-			if (amount >= value.getValue()) {
-				temp.add(value);
-				amount -= value.getValue();
-			}
-		}
-		if (amount == 0) {
-			for (Valuable coin : temp) {
-				money.remove(coin);
-			}
-		} else {
-			return null;
-		}
-		Valuable[] tmp = new Valuable[temp.size()];
-		temp.toArray(tmp);
-
-		return tmp;
+		Money money = new Money(amount,"Baht");
+		return withdraw(money);
 	}
 
 	/**
-	 * Withdraw the requested amount of money. Return an array of Coins
+	 * Withdraw the requested amount of money. Return an array of Valuables
 	 * withdrawn from purse, or return null if cannot withdraw the amount
 	 * requested.
 	 * 
 	 * @param amount
 	 *            is the amount to withdraw
-	 * @return array of Coin objects for money withdrawn, or null if cannot
+	 * @return array of Valuable objects for money withdrawn, or null if cannot
 	 *         withdraw requested amount.
 	 */
-	public Valuable[] withdraw(Valuable amount) {
+	private Valuable[] withdraw(Valuable amount) {
 		List<Valuable> tmpWithdraw = new ArrayList<>();
 		List<Valuable> tmpCurrency = new ArrayList<>();
 		Collections.sort(money, comparable);
