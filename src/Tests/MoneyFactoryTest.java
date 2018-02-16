@@ -9,13 +9,13 @@ import Factory.ThaiMoneyFactory;
 
 public class MoneyFactoryTest {
 	@Test
-	public void testSetAndGetInstanceThai() {
+	public void testSetGetInstanceThai() {
 		MoneyFactory.setFactory(new ThaiMoneyFactory());
 		assertEquals(MoneyFactory.getInstance().getClass().getSimpleName(), "ThaiMoneyFactory");
 	}
 
 	@Test
-	public void testSetAndGetInstanceMalay() {
+	public void testSetGetInstanceMalay() {
 		MoneyFactory.setFactory(new MalayMoneyFactory());
 		assertEquals(MoneyFactory.getInstance().getClass().getSimpleName(), "MalayMoneyFactory");
 	}

@@ -34,7 +34,7 @@ public class ThaiMoneyFactory extends MoneyFactory {
 			for (int i = 4; i < money.length; i++)
 				if (money[i] == value) {
 					nextSerialNumber++;
-					return new BankNote(value, "Baht", nextSerialNumber);
+					return new BankNote(value, "Baht", nextSerialNumber++);
 				}
 		}
 		throw new IllegalArgumentException();
