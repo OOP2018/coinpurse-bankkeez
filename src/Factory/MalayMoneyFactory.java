@@ -18,7 +18,7 @@ public class MalayMoneyFactory extends MoneyFactory {
 	 */
 	@Override
 	public Valuable createMoney(double value) throws IllegalArgumentException {
-		// value for thai coins
+		// value for Malay coins
 		double money[] = { 0.05, 0.10, 0.20, 0.50, 1, 2, 5, 10, 20, 50, 100 };
 		if (value < 1) {
 			for (int i = 0; i < 4; i++) {
