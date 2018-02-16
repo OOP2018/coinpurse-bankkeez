@@ -33,7 +33,6 @@ public class ThaiMoneyFactory extends MoneyFactory {
 		} else if (value <= 1000) {
 			for (int i = 4; i < money.length; i++)
 				if (money[i] == value) {
-					nextSerialNumber++;
 					return new BankNote(value, "Baht", nextSerialNumber++);
 				}
 		}
