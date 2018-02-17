@@ -8,7 +8,7 @@ public class MalayMoneyFactory extends MoneyFactory {
 	// Next bank note serial number
 	private static long nextSerialNumber = 1000000;
 
-	/**
+	/**3
 	 * Create Malay money with the inserted value.
 	 * 
 	 * @param value

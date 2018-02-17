@@ -22,6 +22,6 @@ public class MoneyFactoryTest {
 
 	@Test
 	public void testBankNoteSeialNumber() {
-
+		
 	}
 }
