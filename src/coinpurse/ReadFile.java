@@ -4,6 +4,12 @@ import java.util.ResourceBundle;
 
 import Factory.MoneyFactory;
 
+/**
+ * This class reads the file to choose the factory to produce money.
+ * 
+ * @author Piyawat Setthitikun
+ *
+ */
 public class ReadFile {
 	public static MoneyFactory read() {
 		// create a ResourceBundle from file "purse.properties" on the classpath
