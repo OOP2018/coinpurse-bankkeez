@@ -6,7 +6,7 @@ package Valuables;
  * @author Piyawat Setthitikun
  *
  */
-public interface Valuable {
+public interface Valuable extends Comparable<Valuable> {
 
 	/**
 	 * Get the monetary value of this object.

@@ -11,8 +11,8 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- * A purse contains valuables. You can insert any valuables, withdraw them, check the
- * balance, and check if the purse is full.
+ * A purse contains valuables. You can insert any valuables, withdraw them,
+ * check the balance, and check if the purse is full.
  * 
  * @author Piyawat Setthitikun
  */
@@ -41,8 +41,8 @@ public class Purse {
 	}
 
 	/**
-	 * Count and return the number of valuables in the purse. This is the number of
-	 * valuable inserted, not their value.
+	 * Count and return the number of valuables in the purse. This is the number
+	 * of valuable inserted, not their value.
 	 * 
 	 * @return the number of coins in the purse
 	 */
@@ -110,7 +110,7 @@ public class Purse {
 	 */
 	public Valuable[] withdraw(double amount) {
 
-		Money money = new Money(amount,"Baht");
+		Money money = new Money(amount, "Baht");
 		return withdraw(money);
 	}
 
@@ -129,7 +129,12 @@ public class Purse {
 		List<Valuable> tmpCurrency = new ArrayList<>();
 		Collections.sort(money, comparable);
 		Collections.reverse(money);
-		double value2 = amount.getValue();
+		double value2 = 0;
+		try {
+			value2 = amount.getValue();
+		} catch (NullPointerException npe) {
+			return null;
+		}
 		if (value2 < 0) {
 			return null;
 		}
