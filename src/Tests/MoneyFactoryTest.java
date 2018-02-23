@@ -19,9 +19,4 @@ public class MoneyFactoryTest {
 		MoneyFactory.setFactory(new MalayMoneyFactory());
 		assertEquals(MoneyFactory.getInstance().getClass().getSimpleName(), "MalayMoneyFactory");
 	}
-
-	@Test
-	public void testBankNoteSeialNumber() {
-		
-	}
 }
