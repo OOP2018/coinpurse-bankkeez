@@ -6,6 +6,9 @@ import java.util.List;
 import Valuables.Money;
 import Valuables.Valuable;
 import Valuables.ValueComparator;
+import coinpurse.stragety.GreedyWithdraw;
+import coinpurse.stragety.RecursiveWithdraw;
+import coinpurse.stragety.WithdrawStrategy;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,6 +31,8 @@ public class Purse {
 
 	// ValueComparator object
 	private Comparator<Valuable> comparable = new ValueComparator();
+	// the stragety for withdrawing items
+	WithdrawStrategy strategy;
 
 	/**
 	 * Create a purse with a specified capacity.
@@ -38,6 +43,7 @@ public class Purse {
 	public Purse(int capacity) {
 		this.capacity = capacity;
 		money = new ArrayList<>(capacity);
+		setStrategy(new RecursiveWithdraw());
 	}
 
 	/**
@@ -125,31 +131,10 @@ public class Purse {
 	 *         withdraw requested amount.
 	 */
 	private Valuable[] withdraw(Valuable amount) {
-		List<Valuable> tmpWithdraw = new ArrayList<>();
-		List<Valuable> tmpCurrency = new ArrayList<>();
 		Collections.sort(money, comparable);
 		Collections.reverse(money);
-		double value2 = 0;
-		try {
-			value2 = amount.getValue();
-		} catch (NullPointerException npe) {
-			return null;
-		}
-		if (value2 < 0) {
-			return null;
-		}
-		for (Valuable valuable : money) {
-			if (valuable.getCurrency().equals(amount.getCurrency()))
-				;
-			tmpCurrency.add(valuable);
-		}
-		for (Valuable value : tmpCurrency) {
-			if (value2 >= value.getValue()) {
-				tmpWithdraw.add(value);
-				value2 -= value.getValue();
-			}
-		}
-		if (value2 == 0) {
+		List<Valuable> tmpWithdraw = strategy.withdraw(amount, money);
+		if (tmpWithdraw.size() > 0) {
 			for (Valuable value : tmpWithdraw) {
 				money.remove(value);
 			}
@@ -158,7 +143,6 @@ public class Purse {
 		}
 		Valuable[] tmp = new Valuable[tmpWithdraw.size()];
 		tmpWithdraw.toArray(tmp);
-
 		return tmp;
 	}
 
@@ -170,4 +154,12 @@ public class Purse {
 		return String.format("The total money are %d with the value of %f", this.count(), this.getBalance());
 	}
 
+	/**
+	 * Set the stragety for withdraw method that is use in this class.
+	 * 
+	 * @param strategy
+	 */
+	public void setStrategy(WithdrawStrategy strategy) {
+		this.strategy = strategy;
+	}
 }

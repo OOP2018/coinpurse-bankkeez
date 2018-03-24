@@ -14,7 +14,7 @@ public class Money implements Valuable {
 	protected String currency;
 
 	public Money(double value, String currency) {
-		if (value > 0) {
+		if (value >= 0) {
 			this.value = value;
 		}
 		this.currency = currency;
@@ -74,7 +74,7 @@ public class Money implements Valuable {
 			return false;
 		if (obj.getClass() != this.getClass())
 			return false;
-		Coin coin = (Coin) obj;
-		return this.value == coin.value && this.currency.equals(coin.currency);
+		Valuable money = (Valuable) obj;
+		return this.value == money.getValue() && this.currency.equals(money.getCurrency());
 	}
 }

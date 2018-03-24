@@ -19,6 +19,9 @@ public abstract class MoneyFactory {
 	 * @return MoneyFactory
 	 */
 	public static MoneyFactory getInstance() {
+		if (instance == null) {
+			instance = new ThaiMoneyFactory();
+		}
 		return instance;
 	}
 
@@ -38,12 +41,13 @@ public abstract class MoneyFactory {
 		try {
 			money = Double.parseDouble(value);
 		} catch (NumberFormatException ex) {
-			System.out.println("Cannot parse from String to double!");
+			throw new IllegalArgumentException("Cannot create money", ex);
+//			System.out.println("Cannot parse from String to double!");
 		}
 		// return Valuable which created by the method
 		return createMoney(money);
 	}
-	
+
 	public static void setFactory(MoneyFactory factory) {
 		instance = factory;
 	}
