@@ -12,6 +12,13 @@ import Factory.MoneyFactory;
 import Valuables.Money;
 import Valuables.Valuable;
 
+/**
+ * This class uses JUnit to test the withdraw method from each strategy that is
+ * set.
+ * 
+ * @author Piyawat Setthtikun
+ *
+ */
 public class WithdrawTest {
 
 	private WithdrawStrategy stragety;
